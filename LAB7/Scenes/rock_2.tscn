@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://v5a5aq5dohf2"]
+
+[ext_resource type="PackedScene" uid="uid://obd4d85qydog" path="res://Assets Pack/CliffProps/cliffProps4.glb" id="1_p2sd6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6yfv2"]
+size = Vector3(3.3746, 1.24268, 3.63422)
+
+[node name="Rock2" type="StaticBody3D"]
+
+[node name="cliffProps4" parent="." instance=ExtResource("1_p2sd6")]
+transform = Transform3D(1, 0, 0, 0, -0.0121472, 0.999926, 0, -0.999926, -0.0121472, 0, 0.914373, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0635834, 0.931792, -0.139436)
+shape = SubResource("BoxShape3D_6yfv2")

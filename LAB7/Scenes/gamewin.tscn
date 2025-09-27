@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0yjs4d2y808f"]
+
+[ext_resource type="Script" uid="uid://ckb8ltgmu8gd0" path="res://Scenes/gamewin.gd" id="1_32k7n"]
+[ext_resource type="FontFile" uid="uid://di613mfoegnat" path="res://button/MooyorDemo.ttf" id="2_2o8ok"]
+[ext_resource type="Texture2D" uid="uid://b7grkpcehdekj" path="res://Picture/unnamed (2).png" id="2_32k7n"]
+[ext_resource type="AudioStream" uid="uid://culid5mlqwk3" path="res://Assets Pack/Audio/brass-fanfare-with-timpani-and-winchimes-reverberated-146260.mp3" id="4_3y1hh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_32k7n"]
+font = ExtResource("2_2o8ok")
+font_size = 100
+
+[node name="gamewin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_32k7n")
+
+[node name="Win" type="CanvasLayer" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="Win"]
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 1153.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Win"]
+position = Vector2(574, 331)
+scale = Vector2(0.996094, 0.792969)
+texture = ExtResource("2_32k7n")
+
+[node name="ColorRect" type="ColorRect" parent="Win"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -238.5
+offset_right = 350.0
+offset_bottom = 238.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.380392)
+
+[node name="Label" type="Label" parent="Win/ColorRect"]
+offset_left = 155.0
+offset_top = 137.5
+offset_right = 560.0
+offset_bottom = 283.5
+text = "YOU WIN!"
+label_settings = SubResource("LabelSettings_32k7n")
+
+[node name="newgame" type="Button" parent="Win/ColorRect"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 303.5
+offset_right = 346.0
+offset_bottom = 382.5
+text = "Playa Again"
+
+[node name="quit" type="Button" parent="Win/ColorRect"]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 301.5
+offset_right = 574.0
+offset_bottom = 377.5
+text = "Quit"
+
+[node name="winsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3y1hh")
+
+[connection signal="pressed" from="Win/ColorRect/newgame" to="." method="_on_newgame_pressed"]
+[connection signal="pressed" from="Win/ColorRect/quit" to="." method="_on_quit_pressed"]

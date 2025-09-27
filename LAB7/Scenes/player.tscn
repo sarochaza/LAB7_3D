@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddoop43cjt252"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f60y1"]
+radius = 0.4
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_f60y1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]

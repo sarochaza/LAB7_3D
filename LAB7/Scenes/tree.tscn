@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxekn11gvn8pp"]
+
+[ext_resource type="PackedScene" uid="uid://dgmy0rfynwf8u" path="res://Assets Pack/pinetree.glb" id="1_0vwjc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rsuno"]
+height = 2.69695
+
+[node name="Tree" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.07637, 0, 0, 0, 1.07637, 0, 0, 0, 1.07637, 0.0144846, 1.02783, -0.0210479)
+shape = SubResource("CapsuleShape3D_rsuno")
+
+[node name="pinetree" parent="." instance=ExtResource("1_0vwjc")]

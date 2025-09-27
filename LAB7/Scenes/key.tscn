@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhq4iq5o402d8"]
+
+[ext_resource type="Script" uid="uid://bt0qh0gevx046" path="res://Scenes/key.gd" id="1_udxw8"]
+[ext_resource type="PackedScene" uid="uid://w3gmws7tmbc6" path="res://Assets Pack/Key.glb" id="1_ut0wq"]
+[ext_resource type="AudioStream" uid="uid://bhhvv6mml1rh0" path="res://Assets Pack/Audio/coin-recieved-230517.mp3" id="3_brn0f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_udxw8"]
+size = Vector3(0.439941, 0.0488281, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_brn0f"]
+size = Vector3(0.768837, 0.0844727, 1.42218)
+
+[node name="key" type="CharacterBody3D"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+script = ExtResource("1_udxw8")
+
+[node name="Root Scene" parent="." instance=ExtResource("1_ut0wq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0065918, 0.0224609, 0)
+shape = SubResource("BoxShape3D_udxw8")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300636, -0.00854492, -0.0166321)
+shape = SubResource("BoxShape3D_brn0f")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.160659, 0)
+light_color = Color(0.834126, 0.830593, 7.70092e-07, 1)
+light_energy = 1.288
+
+[node name="coin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_brn0f")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

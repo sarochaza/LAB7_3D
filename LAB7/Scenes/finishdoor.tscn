@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcqm3lr8jvdoh"]
+
+[ext_resource type="Script" uid="uid://0kwh2xdnoogc" path="res://Scenes/finishdoor.gd" id="1_4cln2"]
+[ext_resource type="PackedScene" uid="uid://cila2u5q6oj8f" path="res://Assets Pack/Door Round.glb" id="1_5x5w8"]
+[ext_resource type="FontFile" uid="uid://di613mfoegnat" path="res://button/MooyorDemo.ttf" id="3_dsgxj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4cln2"]
+size = Vector3(0.33197, 0.66748, 0.0698242)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y3e4o"]
+size = Vector3(1, 1.17981, 0.481445)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y3e4o"]
+font = ExtResource("3_dsgxj")
+font_size = 30
+outline_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_dsgxj"]
+
+[node name="finishdoor" type="StaticBody3D"]
+script = ExtResource("1_4cln2")
+
+[node name="Root Scene" parent="." instance=ExtResource("1_5x5w8")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00491333, 0.328449, -0.0964355)
+shape = SubResource("BoxShape3D_4cln2")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.371392, 0)
+light_color = Color(1, 1, 0.443137, 1)
+light_energy = 2.778
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.602593, 0.0131836)
+shape = SubResource("BoxShape3D_y3e4o")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Lock" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.5
+offset_top = -69.0
+offset_right = 222.5
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "                  LOCK
+
+"
+label_settings = SubResource("LabelSettings_y3e4o")
+
+[node name="quest" type="Label" parent="CanvasLayer"]
+offset_left = 432.0
+offset_top = 322.0
+offset_right = 764.0
+offset_bottom = 345.0
+text = "must have  7 keys  and eliminate enemy 25"
+label_settings = SubResource("LabelSettings_dsgxj")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638986, -0.0029442)
+light_color = Color(1, 0.500436, 0.98703, 1)
+light_energy = 2.628
+light_indirect_energy = 3.424
+light_volumetric_fog_energy = 3.586
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
